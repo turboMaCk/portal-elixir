@@ -43,6 +43,13 @@ defmodule Portal do
   end
 
   @doc """
+  Shoots a new door with the given `color`.
+  """
+  def shoot(color) do
+    Supervisor.start_child(Portal.Supervisor, [color])
+  end
+
+  @doc """
   Pushes data to from source `portal` to target `portal`.
   """
   defp push(portal, direction) do
@@ -65,13 +72,6 @@ defmodule Portal do
       :left -> { portal.left, portal.right }
       :right -> { portal.right, portal.left }
     end
-  end
-
-  @doc """
-  Shoots a new door with the given `color`.
-  """
-  def shoot(color) do
-    Supervisor.start_child(Portal.Supervisor, [color])
   end
 end
 
