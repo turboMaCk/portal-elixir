@@ -30,4 +30,13 @@ defmodule PortalTest do
     assert Portal.Door.get(:orange) == [3, 2, 1]
     assert Portal.Door.get(:blue) == []
   end
+
+  test "inspect" do
+    Portal.shoot(:orange)
+    Portal.shoot(:blue)
+
+    portal = Portal.transfer(:orange, :blue, [1, 2, 3])
+    [ name | _ ] = String.split( Inspect.inspect(portal, nil), "\n")
+    assert name == "#Portal<"
+  end
 end
