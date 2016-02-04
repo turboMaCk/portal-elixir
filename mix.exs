@@ -4,6 +4,8 @@ defmodule Portal.Mixfile do
   def project do
     [app: :portal,
      version: "0.0.1",
+     name: "portal-elixir",
+     source_url: "https://github.com/turboMaCk/portal-elixir",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -28,6 +30,7 @@ defmodule Portal.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:earmark, "~> 0.1", only: :dev},
+     {:ex_doc, "~> 0.11", only: :dev}]
   end
 end
